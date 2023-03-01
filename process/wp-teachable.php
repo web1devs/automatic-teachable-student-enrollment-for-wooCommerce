@@ -3,7 +3,7 @@ $apiKeyShow = get_option('teachable_fild_teachable_api_key');
 // $courseNameShow = get_option('teachable_fild_courses_name');
 // $authorBioIdShow = get_option('teachable_fild_author_bio_id');
 
-define("TEACHABLEAPIKEY", $apiKeyShow ); // u7dwFsZZrQYuM7TaUjixiE6AZ62ymNqW
+define("TEACHABLEAPIKEY", $apiKeyShow ); //  
 if (TEACHABLEAPIKEY != '') {
 	# code...
 
@@ -60,7 +60,7 @@ if (TEACHABLEAPIKEY != '') {
 		$ch2 = curl_init();
 		curl_setopt($ch2,CURLOPT_URL, $url2);
 
-		//$apiKey ='u7dwFsZZrQYuM7TaUjixiE6AZ62ymNqW';
+		//$apiKey =' ';
 
 		curl_setopt($ch2, CURLOPT_HTTPHEADER, array(
 			'accept:application/json',
@@ -154,7 +154,7 @@ if (TEACHABLEAPIKEY != '') {
 					$url2="https://developers.teachable.com/v1/unenroll";
 					$ch2 = curl_init();
 					curl_setopt($ch2,CURLOPT_URL, $url2);
-					//$apiKey ='u7dwFsZZrQYuM7TaUjixiE6AZ62ymNqW';
+					//$apiKey =' ';
 					$data = '{"user_id":'.$teachable_user_id.',"course_id":'.$meta_course_id.'}';
 
 					curl_setopt($ch2, CURLOPT_HTTPHEADER, array(
@@ -224,7 +224,7 @@ if (TEACHABLEAPIKEY != '') {
 					$url2="https://developers.teachable.com/v1/enroll";
 					$ch2 = curl_init();
 					curl_setopt($ch2,CURLOPT_URL, $url2);
-					//$apiKey ='u7dwFsZZrQYuM7TaUjixiE6AZ62ymNqW';
+					//$apiKey =' ';
 					$data = '{"user_id":'.$teachable_user_id.',"course_id":'.$meta_course_id.'}';
 
 					curl_setopt($ch2, CURLOPT_HTTPHEADER, array(
