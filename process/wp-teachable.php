@@ -140,15 +140,14 @@ if (TEACHABLEAPIKEY != '') {
 
 		$order = wc_get_order( $order_id );
 
-		// add filter hook to change email & name 
-		$billing_email = $order->get_billing_email();
-		$billing_name = $order->get_billing_first_name().' '.$order->get_billing_last_name();
-
-
 		foreach ( $order->get_items() as $item_id => $item ) {
 			$meta_course_id = get_post_meta( $item->get_product_id(), 'teachable_course_id', true );
 
 			if($meta_course_id!=null){
+				// opportunity to change enrollment student's email & name using below filters
+				$billing_email = apply_filters('teachable_student_email',$order->get_billing_email(),$order_id,$item_id);
+				$billing_name = apply_filters('teachable_student_name',$order->get_billing_first_name(),$order_id,$item_id);
+
 				$teachable_user_id=push_to_teachable($billing_name,$billing_email);
 				if($teachable_user_id>0){
 					$url2="https://developers.teachable.com/v1/unenroll";
@@ -183,41 +182,13 @@ if (TEACHABLEAPIKEY != '') {
 	function wpteachable_enroll_user_to_teachable( $order_id ) {
 
 		$order = wc_get_order( $order_id );
-		
-		// remove this section & add filter hook instead
-		$billingEmailShow = get_option('teachable_fild_email');
-		if($billingEmailShow == 'billing_email') {
-			$billing_email = $order->get_billing_email();
-		} else {
-			$billing_email = $order->get_billing_email();
-		}
-
-
-		$nameShow = get_option('teachable_fild_name');
-		if($nameShow == 'billing_full_name') {
-			$billing_name = $order->get_formatted_billing_full_name();
-		} 
-		elseif($nameShow == 'shipping_full_name') {
-			$billing_name = $order->get_formatted_shipping_full_name();
-		}
-		elseif($nameShow == 'shipping_first_name') {
-			$billing_name = $order->get_shipping_first_name();
-		}
-		elseif($nameShow == 'shipping_last_name') {
-			$billing_name = $order->get_shipping_last_name();
-		}
-		elseif($nameShow == 'billing_last_name') {
-			$billing_name = $order->get_billing_last_name();
-		}
-		else {
-			$billing_name = $order->get_billing_first_name();
-		}
-		
-
 		foreach ( $order->get_items() as $item_id => $item ) {
 			$meta_course_id = get_post_meta( $item->get_product_id(), 'teachable_course_id', true );
 
 			if($meta_course_id!=null){
+				// opportunity to change enrollment student's email & name using below filters
+				$billing_email = apply_filters('teachable_student_email',$order->get_billing_email(),$order_id,$item_id);
+				$billing_name = apply_filters('teachable_student_name',$order->get_billing_first_name(),$order_id,$item_id);
 
 				$teachable_user_id=push_to_teachable($billing_name,$billing_email);
 				if($teachable_user_id>0){
