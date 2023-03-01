@@ -33,7 +33,7 @@ function get_teachable_fild_settings() {
         ),
         'is_published' => array(
             'id' => 'teachable_fild_is_published',
-            'desc' => __( 'You may choose published or all courses including draf', 'woo-teachable' ),
+            'desc' => __( 'You may choose published or all courses including draft', 'woo-teachable' ),
             'type' => 'checkbox',
             //'cbvalue'       => 'yes',
 			// 'css'      => 'min-width:300px;',
@@ -43,7 +43,7 @@ function get_teachable_fild_settings() {
             'id'	=> 'teachable_fild_order_status',
             'desc' => __( 'When a student will be enrolled in Teachable after checkout?', 'woo-teachable' ),
             'type' => 'select', // multiselect 
-            'name' => __( 'Order Status', 'woo-teachable' ),
+            'name' => __( 'Order Status (when student will be enrolled )', 'woo-teachable' ),
             'desc_tip' => true,
             'options' => array(
                 'completed' => __('Completed', 'woo-teachable' ),
