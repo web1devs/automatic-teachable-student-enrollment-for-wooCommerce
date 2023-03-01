@@ -1,8 +1,5 @@
 <?php
 $apiKeyShow = get_option('teachable_fild_teachable_api_key');
-// $courseNameShow = get_option('teachable_fild_courses_name');
-// $authorBioIdShow = get_option('teachable_fild_author_bio_id');
-
 define("TEACHABLEAPIKEY", $apiKeyShow ); //  
 if (TEACHABLEAPIKEY != '') {
 	# code...
