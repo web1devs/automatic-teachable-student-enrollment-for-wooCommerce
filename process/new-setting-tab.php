@@ -31,15 +31,9 @@ function get_teachable_fild_settings() {
             'desc_tip' => true,
             'name' => __('Teachable API Key', 'woo-teachable'),
         ),
-        // 'courses_name' => array(
-        //     'id' => 'teachable_fild_courses_name',
-        //     'desc' => __('Enter you Teachable course name', 'woo-teachable' ),
-        //     'type' => 'text',
-        //     'name' => __( 'Teachable Course Name', 'woo-teachable' ),
-        // ),
         'is_published' => array(
             'id' => 'teachable_fild_is_published',
-            'desc' => __( 'You may choose published or all courses including draf', 'woo-teachable' ),
+            'desc' => __( 'You may choose published or all courses including draft', 'woo-teachable' ),
             'type' => 'checkbox',
             //'cbvalue'       => 'yes',
 			// 'css'      => 'min-width:300px;',
@@ -49,7 +43,7 @@ function get_teachable_fild_settings() {
             'id'	=> 'teachable_fild_order_status',
             'desc' => __( 'When a student will be enrolled in Teachable after checkout?', 'woo-teachable' ),
             'type' => 'select', // multiselect 
-            'name' => __( 'Order Status', 'woo-teachable' ),
+            'name' => __( 'Order Status (when student will be enrolled )', 'woo-teachable' ),
             'desc_tip' => true,
             'options' => array(
                 'completed' => __('Completed', 'woo-teachable' ),
@@ -60,40 +54,6 @@ function get_teachable_fild_settings() {
             )
 
         ),
-        'name' => array(
-            'id'	=> 'teachable_fild_name',
-            'desc' => __( 'Select name want to enroll the user in teachable', 'woo-teachable' ),
-            'type' => 'select', // multiselect 
-            'name' => __( 'Teachable Enroll Name', 'woo-teachable' ),
-            'desc_tip' => true,
-            'options' => array(
-                'billing_first_name' => __('Billing First name', 'woo-teachable' ),
-                'billing_last_name' => __('Billing Last name', 'woo-teachable' ),
-                'billing_full_name' => __('Billing full name (first+last)', 'woo-teachable' ),
-                'shipping_first_name' => __( 'Shipping First name', 'woo-teachable' ),
-                'shipping_last_name' => __( 'Shipping Last name', 'woo-teachable' ),
-                'shipping_full_name' => __('Shipping full name (first+last)', 'woo-teachable' ),
-            )
-
-        ),
-        'email' => array(
-            'id'	=> 'teachable_fild_email',
-            'desc' => __( 'Select Email want to enroll the user in teachable', 'woo-teachable' ),
-            'type' => 'select', // multiselect 
-            'name' => __( 'Teachable Enroll Email', 'woo-teachable' ),
-            'desc_tip' => true,
-            'options' => array(
-                'billing_email' => __('Billing email', 'woo-teachable' ),
-                // 'shipping_email' => __( 'Shipping email', 'woo-teachable' ),
-            )
-
-        ),
-        // 'author_bio_id' => array(
-        //     'id' => 'teachable_fild_author_bio_id',
-        //     'desc' => __('Enter you Teachable course author name (id)', 'woo-teachable'),
-        //     'type' => 'text',
-        //     'name' => __('Teachable Course Author Name', 'woo-teachable'),
-        // ),
         'section_end' => array(
             'id' => 'teachable_fild_settings_sectionend',
             'type' => 'sectionend',
