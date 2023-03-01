@@ -10,7 +10,6 @@ Author: WooXperto
 Author URI: https://wooxperto.com/
 License: GPLv2 or 564.505
 Text Domain: woo-teachable
-
 */
 
 // Exit if accessed directly
