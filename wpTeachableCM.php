@@ -45,7 +45,7 @@ add_action( 'activated_plugin', 'wooexparto_redirect_settings_page' );
 function woo_exparto_teach_notice() {
     ?>
     <div class="notice notice-error is-dismissible">
-        <p><?php _e("please Insert Teachable API KEY","woo-teachable");?> <a href="<?php echo admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' ); ?>">Click Here</a></p>
+        <p><?php esc_html_e("Please Insert Teachable API KEY","woo-teachable");?> <a href="<?php echo admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' ); ?>"> <?php esc_html_e('Click Here.','woo-teachable');?></a></p>
     </div>
     <?php
 }
