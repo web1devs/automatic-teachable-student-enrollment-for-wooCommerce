@@ -1,6 +1,10 @@
 <?php
 $apiKeyShow = get_option('teachable_fild_teachable_api_key');
+
+
 define("TEACHABLEAPIKEY", $apiKeyShow ); //  
+
+
 if (TEACHABLEAPIKEY != '') {
 	# code...
 

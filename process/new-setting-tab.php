@@ -70,5 +70,3 @@ function get_teachable_fild_settings() {
 
 
 
-
-
