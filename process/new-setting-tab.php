@@ -26,9 +26,9 @@ function get_teachable_fild_settings() {
         ),
         'teachable_api_key' => array(
             'id' => 'teachable_fild_teachable_api_key',
-            'desc' => __('Set your teachable api key', 'woo-teachable'),
+            'desc' => __('To get teachable API KEY - check this <a href="https://docs.teachable.com/docs/quickstart-guide"> DOC</a>', 'woo-teachable'),
             'type' => 'text',
-            'desc_tip' => true,
+            'desc_tip' => __('Set your teachable api key', 'woo-teachable'),
             'name' => __('Teachable API Key', 'woo-teachable'),
         ),
         'is_published' => array(
