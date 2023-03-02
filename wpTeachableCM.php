@@ -2,7 +2,7 @@
 /*
 Plugin Name: WooCommerce Teachable Enrollment
 
-Plugin URI: https://wooxperto.com/plugins/
+Plugin URI: https://wooxperto.com/
 Description: This plugin for Teachable Course Management. wpTeachableCM is the fastest, fully customizable & beautiful plugin suitable for e-commerce websites. Designed, Developed, Maintained & Supported by WooXperto.
 
 Version: 1.0.0
@@ -53,8 +53,24 @@ function woo_exparto_teach_notice() {
 
 $woo_settings_page = admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' );
 
-$current_page_url = admin_url(sprintf(basename($_SERVER['REQUEST_URI'])));
+$current_page_url = admin_url(sprintf(basename($_SERVER['REQUEST_URI']),[]));
 
 if(TEACHABLEAPIKEY==null && $current_page_url != $woo_settings_page ){
     add_action( 'admin_notices', 'woo_exparto_teach_notice' );
+}
+
+/**
+ *  Add plugin setting link on the plugin.php file.
+*/
+
+add_filter('plugin_action_links_'. plugin_basename(__FILE__), 'woo_exparto_teachable_settings_link');
+
+function woo_exparto_teachable_settings_link( array $links ){
+    $url = get_admin_url() . "admin.php?page=wc-settings&tab=teachable_fild";
+    $settings_link = '<a href="' . $url . '">' . __('Settings', 'woo-teachable') . '</a>';
+    
+    $links[] = $settings_link;
+
+    return $links;
+    
 }
