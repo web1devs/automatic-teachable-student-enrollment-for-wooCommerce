@@ -1,4 +1,8 @@
 <?php
+/* add wx-teachable.php file added here */
+
+require_once( TCM_ACC_PATH . 'process/wx-teachable.php' );
+
 
 
 add_filter('woocommerce_settings_tabs_array', 'teachable_add_fild', 50,1);
@@ -68,7 +72,53 @@ function get_teachable_fild_settings() {
 
 /*===== Add code from Wx-Teachable.php filte later start======*/
 
-/*  Desc: Redirected to woocommerce settings page after plugin loaded */
+/**
+ *  
+ *  Desc: Redirected to woocommerce settings page after plugin loaded 
+ * 
+*/
+function wooexparto_redirect_settings_page( $plugin ) {
+    if( $plugin == plugin_basename( __FILE__ ) ) {
+        exit( wp_redirect( admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' ) ) );
+    }
+}
+add_action( 'activated_plugin', 'wooexparto_redirect_settings_page' );
+
+
+
+
+function woo_exparto_teach_notice() {
+    ?>
+    <div class="notice notice-error is-dismissible">
+        <p><?php esc_html_e("Please Insert Teachable API KEY","wx-teachable");?> <a href="<?php echo admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' ); ?>"> <?php esc_html_e('Click Here.','wx-teachable');?></a></p>
+    </div>
+    <?php
+}
+
+
+$woo_settings_page = admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' );
+
+$current_page_url = admin_url(basename($_SERVER['REQUEST_URI']));
+
+if(TEACHABLEAPIKEY==null && $current_page_url != $woo_settings_page ){
+    add_action( 'admin_notices', 'woo_exparto_teach_notice' );
+}
+
+/**
+ *  Add plugin setting link on the plugin.php file.
+*/
+
+add_filter('plugin_action_links_'. plugin_basename(__FILE__), 'woo_exparto_teachable_settings_link');
+
+function woo_exparto_teachable_settings_link( array $links ){
+    $url = get_admin_url() . "admin.php?page=wc-settings&tab=teachable_fild";
+    $settings_link = '<a href="' . $url . '">' . __('Settings', 'wx-teachable') . '</a>';
+    
+    $links[] = $settings_link;
+
+    return $links;
+    
+}
 
 
 

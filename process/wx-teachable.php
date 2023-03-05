@@ -110,28 +110,7 @@ if (TEACHABLEAPIKEY != '') {
 	}
 	add_action( 'save_post', 'wpteachable_save_postdata' );
 
-	function wpteachable_meta_box_scripts()
-	{
-		// get current admin screen, or null
-		$screen = get_current_screen();
-		// verify admin screen object
-		if (is_object($screen)) {
-			// enqueue only for specific post types
-			if (in_array($screen->post_type, ['shop_order'])) {
-				// enqueue script
-				wp_enqueue_script('wpteachable_meta_box_script', plugin_dir_url(__FILE__) . 'js/admin.js', ['jquery']);
-				// localize script, create a custom js object
-				wp_localize_script(
-					'wpteachable_meta_box_script',
-					'wpteachable_meta_box_obj',
-					[
-						'url' => admin_url('admin-ajax.php'),
-					]
-				);
-			}
-		}
-	}
-	add_action('admin_enqueue_scripts', 'wpteachable_meta_box_scripts');
+
 
 	// un enrollment from teachable if order cancelled or refunded
 	add_action( 'woocommerce_order_status_refunded', 'wpteachable_unenroll_user_to_teachable' );
