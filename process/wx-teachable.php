@@ -39,7 +39,7 @@ if (TEACHABLEAPIKEY != '') {
 		foreach ( $screens as $screen ) {
 			add_meta_box(
 				'wpteachable_box_id',           // Unique ID
-				__('Woocommerce to Teachable','woo-teachable'),      		// Box title
+				__('Woocommerce to Teachable','wx-teachable'),      		// Box title
 				'wpteachable_custom_box_html',  // Content callback, must be of type callable
 				$screen                         // Post type
 			);
@@ -81,9 +81,9 @@ if (TEACHABLEAPIKEY != '') {
 
 		?>
 		<div id="courseDiv" class="form-group" >
-			<label for="course_id"><?=__('Choose a Teachable Course','woo-teachable')?>:</label><br/>
+			<label for="course_id"><?=__('Choose a Teachable Course','wx-teachable')?>:</label><br/>
 			<select  class="form-control form-select" aria-label="Default select example" name="course_id" id="course_id">
-				<option value="" selected><?=__('Select Course','woo-teachable')?></option>
+				<option value="" selected><?=__('Select Course','wx-teachable')?></option>
 				<?php
 				foreach ( $teachable_courses['courses'] as $item_id => $item ) {
 					//$brand_name = get_post_meta( $item->get_product_id(), 'actual_brand_name', true );
