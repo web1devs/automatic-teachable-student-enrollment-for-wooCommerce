@@ -23,7 +23,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'TCM_ACC_URL', WP_PLUGIN_URL . '/' . plugin_basename( dirname( __FILE__ ) ) . '/' );
 define( 'TCM_ACC_PATH', plugin_dir_path( __FILE__ ) );
 
-require_once( TCM_ACC_PATH . 'process/wx-admin-settings.php' );
+$apiKeyShow = get_option('teachable_fild_teachable_api_key');
+
+define("TEACHABLEAPIKEY", $apiKeyShow );  
+
+if( is_admin() ){
+    require_once( TCM_ACC_PATH . 'process/wx-admin-settings.php' );
+}
+
 require_once( TCM_ACC_PATH . 'process/wx-teachable.php' );
 
 

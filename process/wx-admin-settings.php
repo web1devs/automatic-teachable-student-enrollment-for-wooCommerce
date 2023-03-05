@@ -1,8 +1,4 @@
 <?php
-/* add wx-teachable.php file added here */
-
-require_once( TCM_ACC_PATH . 'process/wx-teachable.php' );
-
 
 
 add_filter('woocommerce_settings_tabs_array', 'teachable_add_fild', 50,1);
@@ -124,4 +120,106 @@ function woo_exparto_teachable_settings_link( array $links ){
 
 /*===== Add code from Wx-Teachable.php filte later  end ======*/
 
+if (TEACHABLEAPIKEY != '') {
+    function wpteachable_is_secured( $nonce_field, $action, $post_id ) {
+		$nonce = isset( $_POST[ $nonce_field ] ) ? $_POST[ $nonce_field ] : '';
 
+		if ( $nonce == '' ) {
+			return false;
+		}
+		if ( ! wp_verify_nonce( $nonce, $action ) ) {
+			return false;
+		}
+
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return false;
+		}
+
+		if ( wp_is_post_autosave( $post_id ) ) {
+			return false;
+		}
+
+		if ( wp_is_post_revision( $post_id ) ) {
+			return false;
+		}
+
+		return true;
+
+	}
+
+	function wpteachable_add_custom_box() {
+		$screens = [ 'product' ];
+		foreach ( $screens as $screen ) {
+			add_meta_box(
+				'wpteachable_box_id',           // Unique ID
+				__('Woocommerce to Teachable','wx-teachable'),      		// Box title
+				'wpteachable_custom_box_html',  // Content callback, must be of type callable
+				$screen                         // Post type
+			);
+		}
+	}
+	add_action( 'add_meta_boxes', 'wpteachable_add_custom_box' );
+	// admin meta box for choosing teachable course
+	function wpteachable_custom_box_html( $post ) {
+		$meta_course_id = get_post_meta( $post->ID, 'teachable_course_id', true );
+		
+
+		$isPublishedShow = get_option('teachable_fild_is_published');
+		if($isPublishedShow == 'yes') {
+			$url2="https://developers.teachable.com/v1/courses?is_published=true";
+		} else {
+			$url2="https://developers.teachable.com/v1/courses";
+		}
+
+		$ch2 = curl_init();
+		curl_setopt($ch2,CURLOPT_URL, $url2);
+
+		//$apiKey =' ';
+
+		curl_setopt($ch2, CURLOPT_HTTPHEADER, array(
+			'accept:application/json',
+			'apiKey: ' . TEACHABLEAPIKEY
+		));
+
+		curl_setopt($ch2,CURLOPT_CUSTOMREQUEST,'GET');
+		curl_setopt($ch2,CURLOPT_SSL_VERIFYPEER,0);
+		curl_setopt($ch2,CURLOPT_SSL_VERIFYHOST,0);
+		curl_setopt($ch2,CURLOPT_RETURNTRANSFER, true);
+		$response2 = curl_exec($ch2);
+		$teachable_courses = json_decode($response2, true);
+		
+		// print_r($teachable_courses);
+		curl_close($ch2);
+
+
+		?>
+		<div id="courseDiv" class="form-group" >
+			<label for="course_id"><?=__('Choose a Teachable Course','wx-teachable')?>:</label><br/>
+			<select  class="form-control form-select" aria-label="Default select example" name="course_id" id="course_id">
+				<option value="" selected><?=__('Select Course','wx-teachable')?></option>
+				<?php
+				foreach ( $teachable_courses['courses'] as $item_id => $item ) {
+					//$brand_name = get_post_meta( $item->get_product_id(), 'actual_brand_name', true );
+					?>
+					<option <?php echo $meta_course_id==$item['id']?'selected':''; ?> data-id="<?php echo $item['name'];?>" value="<?php echo $item['id']; ?>">
+						<?php echo $item['name']; ?>
+					</option>
+					<?php
+				}
+				?>
+			</select><br/><br/>
+		</div>
+		<?php
+	}
+
+	function wpteachable_save_postdata( $post_id ) {
+		if ( array_key_exists( 'course_id', $_POST ) ) {
+			update_post_meta(
+				$post_id,
+				'teachable_course_id',
+				sanitize_text_field($_POST['course_id'])
+			);
+		}
+	}
+	add_action( 'save_post', 'wpteachable_save_postdata' );
+}
