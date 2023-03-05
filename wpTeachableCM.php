@@ -53,7 +53,7 @@ function woo_exparto_teach_notice() {
 
 $woo_settings_page = admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' );
 
-$current_page_url = admin_url(sprintf(basename($_SERVER['REQUEST_URI']),[]));
+$current_page_url = admin_url(basename($_SERVER['REQUEST_URI']));
 
 if(TEACHABLEAPIKEY==null && $current_page_url != $woo_settings_page ){
     add_action( 'admin_notices', 'woo_exparto_teach_notice' );
