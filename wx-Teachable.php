@@ -8,7 +8,7 @@ Description: This plugin for Teachable Course Management. wpTeachableCM is the f
 Version: 1.0.0
 Author: WooXperto
 Author URI: https://wooxperto.com/
-License: GPLv2 or 564.505
+License: GPLv2 or Later
 Text Domain: wx-teachable
 */
 
@@ -26,7 +26,7 @@ define( 'TCM_ACC_PATH', plugin_dir_path( __FILE__ ) );
 $apiKeyShow = get_option('teachable_fild_teachable_api_key');
 
 define("TEACHABLEAPIKEY", $apiKeyShow );  
-
+define("PLUGIN_BASENAME",plugin_basename(__FILE__));
 if( is_admin() ){
     require_once( TCM_ACC_PATH . 'process/wx-admin-settings.php' );
 }

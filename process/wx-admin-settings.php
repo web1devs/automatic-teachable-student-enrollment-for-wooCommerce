@@ -104,7 +104,7 @@ if(TEACHABLEAPIKEY==null && $current_page_url != $woo_settings_page ){
  *  Add plugin setting link on the plugin.php file.
 */
 
-add_filter('plugin_action_links_'. plugin_basename(__FILE__), 'woo_exparto_teachable_settings_link');
+add_filter('plugin_action_links_'. PLUGIN_BASENAME, 'woo_exparto_teachable_settings_link');
 
 function woo_exparto_teachable_settings_link( array $links ){
     $url = get_admin_url() . "admin.php?page=wc-settings&tab=teachable_fild";
