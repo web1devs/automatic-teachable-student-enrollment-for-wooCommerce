@@ -1,9 +1,9 @@
 <?php 
 /*
-Plugin Name: WooCommerce Teachable Enrollment
+Plugin Name: WooCommerce Teachable Student Enrollment
 
 Plugin URI: https://wooxperto.com/
-Description: This plugin for Teachable Course Management. wpTeachableCM is the fastest, fully customizable & beautiful plugin suitable for e-commerce websites. Designed, Developed, Maintained & Supported by WooXperto.
+Description: WooCommerce Teachable Student Enrollment plugin works to connect woocommerce store Teachable platform. It will facilited to sell courses from woocommerce shop and students will be automatically enrolled under right course. It's Designed, Developed, Maintained & Supported by WooXperto Team.
 
 Version: 1.0.0
 Author: WooXperto
