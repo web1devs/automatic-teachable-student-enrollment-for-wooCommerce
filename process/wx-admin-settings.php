@@ -74,7 +74,7 @@ function get_teachable_fild_settings() {
  * 
 */
 function wooexparto_redirect_settings_page( $plugin ) {
-    if( $plugin == plugin_basename( __FILE__ ) ) {
+    if( $plugin === plugin_basename( __FILE__ ) ) {
         exit( wp_redirect( admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' ) ) );
     }
 }
@@ -96,7 +96,7 @@ $woo_settings_page = admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' 
 
 $current_page_url = admin_url(basename($_SERVER['REQUEST_URI']));
 
-if(TEACHABLEAPIKEY==null && $current_page_url != $woo_settings_page ){
+if(TEACHABLEAPIKEY===null && $current_page_url !== $woo_settings_page ){
     add_action( 'admin_notices', 'woo_exparto_teach_notice' );
 }
 
@@ -120,11 +120,11 @@ function woo_exparto_teachable_settings_link( array $links ){
 
 /*===== Add code from Wx-Teachable.php filte later  end ======*/
 
-if (TEACHABLEAPIKEY != '') {
+if (TEACHABLEAPIKEY !== '') {
     function wpteachable_is_secured( $nonce_field, $action, $post_id ) {
 		$nonce = isset( $_POST[ $nonce_field ] ) ? $_POST[ $nonce_field ] : '';
 
-		if ( $nonce == '' ) {
+		if ( $nonce === '' ) {
 			return false;
 		}
 		if ( ! wp_verify_nonce( $nonce, $action ) ) {
@@ -165,7 +165,7 @@ if (TEACHABLEAPIKEY != '') {
 		
 
 		$isPublishedShow = get_option('teachable_fild_is_published');
-		if($isPublishedShow == 'yes') {
+		if($isPublishedShow === 'yes') {
 			$url2="https://developers.teachable.com/v1/courses?is_published=true";
 		} else {
 			$url2="https://developers.teachable.com/v1/courses";
@@ -201,7 +201,7 @@ if (TEACHABLEAPIKEY != '') {
 				foreach ( $teachable_courses['courses'] as $item_id => $item ) {
 					//$brand_name = get_post_meta( $item->get_product_id(), 'actual_brand_name', true );
 					?>
-					<option <?php echo $meta_course_id==$item['id']?'selected':''; ?> data-id="<?php echo $item['name'];?>" value="<?php echo $item['id']; ?>">
+					<option <?php echo $meta_course_id===$item['id']?'selected':''; ?> data-id="<?php echo $item['name'];?>" value="<?php echo $item['id']; ?>">
 						<?php echo $item['name']; ?>
 					</option>
 					<?php
