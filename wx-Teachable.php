@@ -1,13 +1,13 @@
 <?php 
 /*
-Plugin Name: WooCommerce Teachable Student Enrollment
+Plugin Name: Automatic Teachable Student Enrollment for WooCommerce
 
-Plugin URI: https://www.wooxperto.com/woocommerce-teachable-enrollment/
-Description: WooCommerce Teachable Student Enrollment plugin works to connect woocommerce store Teachable platform. It will facilitate to sell courses from woocommerce shops and students will be automatically enrolled under right course. It's Designed, Developed, Maintained & Supported by WooXperto Team.
+Plugin URI: https://www.webonedevs.com/woocommerce-teachable-enrollment/
+Description: Automatic Teachable Student Enrollment for WooCommerce plugin works to connect woocommerce store to Teachable platform. It will facilitate to sell courses from woocommerce shops and students will be automatically enrolled under right courses. It Designed, Developed, Maintained & Supported by WooXperto Team.
 
 Version: 1.0.0
-Author: WooXperto
-Author URI: https://wooxperto.com/
+Author: WebOneDevs
+Author URI: https://webonedevs.com/
 License: GPLv2 or Later
 Text Domain: wx-teachable
 */
