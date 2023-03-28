@@ -1,7 +1,7 @@
 <?php
-
-
-
+/**
+ * Version: 1.0.0
+ */
 if (TEACHABLEAPIKEY !== '') {
 	# code...
 
@@ -17,7 +17,7 @@ if (TEACHABLEAPIKEY !== '') {
 		foreach ( $order->get_items() as $item_id => $item ) {
 			$meta_course_id = get_post_meta( $item->get_product_id(), 'teachable_course_id', true );
 
-			if($meta_course_id!=null){
+			if($meta_course_id!==null){
 				// opportunity to change enrollment student's email & name using below filters
 				$billing_email = apply_filters('teachable_student_email',$order->get_billing_email(),$order_id,$item_id);
 				$billing_name = apply_filters('teachable_student_name',$order->get_billing_first_name(),$order_id,$item_id);
