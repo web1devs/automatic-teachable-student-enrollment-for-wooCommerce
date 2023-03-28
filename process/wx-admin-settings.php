@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Version: 1.0.0
+ */
 
 add_filter('woocommerce_settings_tabs_array', 'teachable_add_fild', 50,1);
 function teachable_add_fild($settings_tab) {
@@ -196,7 +198,7 @@ if (TEACHABLEAPIKEY !== '') {
 		<div id="courseDiv" class="form-group" >
 			<label for="course_id"><?=__('Choose a Teachable Course','wx-teachable')?>:</label><br/>
 			<select  class="form-control form-select" aria-label="Default select example" name="course_id" id="course_id">
-				<option value="" selected><?=__('Select Course','wx-teachable')?></option>
+				<option value="" selected><?=__('Select a Course','wx-teachable')?></option>
 				<?php
 				foreach ( $teachable_courses['courses'] as $item_id => $item ) {
 					//$brand_name = get_post_meta( $item->get_product_id(), 'actual_brand_name', true );
