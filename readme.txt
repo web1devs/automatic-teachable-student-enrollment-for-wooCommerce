@@ -1,5 +1,5 @@
-=== WooCommerce Teachable Student Enrollment ===
-Contributors: WooXperto
+=== Automatic Teachable Student Enrollment for WooCommerce ===
+Contributors: WebOneDevs
 Tags: WooCommerce, Teachable, Student Entrollment
 Requires at least: 4.7
 Tested up to: 6.1
@@ -7,20 +7,23 @@ Requires PHP: 5.4
 Stable tag: 1.0.0
 License: GPLv2 or later
 
-WooCommerce Teachable Student Enrollment plugin works to connect woocommerce store Teachable platform. It will facilitate to sell courses from woocommerce shops and students will be automatically enrolled under right course.
+Automatic Teachable Student Enrollment for WooCommerce plugin works to connect woocommerce store and Teachable platform. It will facilitate to sell courses from woocommerce shops and students will be automatically enrolled under right course.
 
 == Description ==
-WooCommerce Teachable Student Enrollment plugin works to connect woocommerce store Teachable platform. It will facilitate to sell courses from woocommerce shops and students will be automatically enrolled under right course.
+Automatic Teachable Student Enrollment for WooCommerce plugin works to connect woocommerce store Teachable platform. It will facilitate to sell courses from woocommerce shops and students will be automatically enrolled under right course.
 
 == Installation ==
-Installation is straight Forward. Install it from the WordPress Plugin repository. and after installation  follow below steps
+Note: PHP cURL required (In you webhosting must need to be enabled cURL extension).
+Installation is straight Forward. Install it from the WordPress Plugin repository. and after installation Please follow below steps:
 
-1. Teachable API KEY:  Insert teachable API KEY  in this input field.
+1. Teachable API KEY:  Insert teachable API KEY  in the API Key Field Under woocomerce-> settings-> Tabs-> Teacheable. You can find your teachable API key from your teachable admin panel. Teachable dashboard -> Settings -> API keys 
 
-2. Publish Course Only:  You can chose here  teachable publish course only. if not checked then you publish and drafts courses will display on our Metabox Dropdown list.
+2. Publish Course Only:  If you like to get only published courses from teachable then need to check it, otherwise it'll get all courses from teachable. These courses will show at product add/edit page in admin area.
 
-3. Order Status:  basically woocommerce has some order status such as ( on-hold, Processing, Pendduing, Complete , darft ). So you can select order status here.
+3. Order Status:  Basically woocommerce has a couple of order status such as ( on-hold, Processing, Pendduing, Complete , darft ). So you can select right order status here to push student data to teachable for making enrollment success.
 
 4.  Save Change:  Now click on Save change Button.
+
+That's All.
 
 
