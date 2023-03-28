@@ -3,7 +3,7 @@
 Plugin Name: Automatic Teachable Student Enrollment for WooCommerce
 
 Plugin URI: https://www.webonedevs.com/woocommerce-teachable-enrollment/
-Description: Automatic Teachable Student Enrollment for WooCommerce plugin works to connect woocommerce store to Teachable platform. It will facilitate to sell courses from woocommerce shops and students will be automatically enrolled under right courses. It Designed, Developed, Maintained & Supported by WooXperto Team.
+Description: Automatic Teachable Student Enrollment for WooCommerce plugin works to connect woocommerce store to Teachable platform. It will facilitate to sell courses from woocommerce shops and students will be automatically enrolled under right courses. It Designed, Developed, Maintained & Supported by WebOneDevs Team.
 
 Version: 1.0.0
 Author: WebOneDevs

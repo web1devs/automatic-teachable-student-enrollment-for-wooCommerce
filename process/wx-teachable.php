@@ -10,85 +10,95 @@ if (TEACHABLEAPIKEY !== '') {
 	add_action( 'woocommerce_order_status_refunded', 'wpteachable_unenroll_user_to_teachable' );
 	add_action( 'woocommerce_order_status_cancelled', 'wpteachable_unenroll_user_to_teachable' );
 
-	function wpteachable_unenroll_user_to_teachable( $order_id ) {
+	if( !function_exists('wpteachable_unenroll_user_to_teachable')){
+		function wpteachable_unenroll_user_to_teachable( $order_id ) {
 
-		$order = wc_get_order( $order_id );
-
-		foreach ( $order->get_items() as $item_id => $item ) {
-			$meta_course_id = get_post_meta( $item->get_product_id(), 'teachable_course_id', true );
-
-			if($meta_course_id!==null){
-				// opportunity to change enrollment student's email & name using below filters
-				$billing_email = apply_filters('teachable_student_email',$order->get_billing_email(),$order_id,$item_id);
-				$billing_name = apply_filters('teachable_student_name',$order->get_billing_first_name(),$order_id,$item_id);
-
-				$teachable_user_id=push_to_teachable($billing_name,$billing_email);
-				if($teachable_user_id>0){
-					$url2="https://developers.teachable.com/v1/unenroll";
-					$ch2 = curl_init();
-					curl_setopt($ch2,CURLOPT_URL, $url2);
-					//$apiKey =' ';
-					$data = '{"user_id":'.$teachable_user_id.',"course_id":'.$meta_course_id.'}';
-
-					curl_setopt($ch2, CURLOPT_HTTPHEADER, array(
-						'Content-Type:application/json',
-						'apiKey: ' . TEACHABLEAPIKEY
-					));
-
-					curl_setopt($ch2,CURLOPT_CUSTOMREQUEST,'POST');
-					curl_setopt($ch2,CURLOPT_POSTFIELDS, $data);
-					curl_setopt($ch2,CURLOPT_SSL_VERIFYPEER,0);
-					curl_setopt($ch2,CURLOPT_SSL_VERIFYHOST,0);
-					curl_setopt($ch2,CURLOPT_RETURNTRANSFER, true);
-					$response2 = curl_exec($ch2);
-					curl_close($ch2);
+			$order = wc_get_order( $order_id );
+	
+			foreach ( $order->get_items() as $item_id => $item ) {
+				$meta_course_id = get_post_meta( $item->get_product_id(), 'teachable_course_id', true );
+	
+				if($meta_course_id!==null){
+					// opportunity to change enrollment student's email & name using below filters
+					$billing_email = apply_filters('teachable_student_email',$order->get_billing_email(),$order_id,$item_id);
+					$billing_name = apply_filters('teachable_student_name',$order->get_billing_first_name(),$order_id,$item_id);
+	
+					$teachable_user_id=push_to_teachable($billing_name,$billing_email);
+					if($teachable_user_id>0){
+						$url2="https://developers.teachable.com/v1/unenroll";
+						$ch2 = curl_init();
+						curl_setopt($ch2,CURLOPT_URL, $url2);
+						//$apiKey =' ';
+						$data = '{"user_id":'.$teachable_user_id.',"course_id":'.$meta_course_id.'}';
+	
+						curl_setopt($ch2, CURLOPT_HTTPHEADER, array(
+							'Content-Type:application/json',
+							'apiKey: ' . TEACHABLEAPIKEY
+						));
+	
+						curl_setopt($ch2,CURLOPT_CUSTOMREQUEST,'POST');
+						curl_setopt($ch2,CURLOPT_POSTFIELDS, $data);
+						curl_setopt($ch2,CURLOPT_SSL_VERIFYPEER,0);
+						curl_setopt($ch2,CURLOPT_SSL_VERIFYHOST,0);
+						curl_setopt($ch2,CURLOPT_RETURNTRANSFER, true);
+						$response2 = curl_exec($ch2);
+						curl_close($ch2);
+					}
 				}
 			}
+	
+	
 		}
-
-
 	}
+
+	
 
 	// enrole student data to teachable
 	$orderStatusShow = get_option('teachable_fild_order_status');
-	add_action( 'woocommerce_order_status_'.$orderStatusShow, 'wpteachable_enroll_user_to_teachable' );
 
-	function wpteachable_enroll_user_to_teachable( $order_id ) {
+	if( !function_exists('wpteachable_enroll_user_to_teachable')){
+		add_action( 'woocommerce_order_status_'.$orderStatusShow, 'wpteachable_enroll_user_to_teachable' );
 
-		$order = wc_get_order( $order_id );
-		foreach ( $order->get_items() as $item_id => $item ) {
-			$meta_course_id = get_post_meta( $item->get_product_id(), 'teachable_course_id', true );
-
-			if($meta_course_id!==null){
-				// opportunity to change enrollment student's email & name using below filters
-				$billing_email = apply_filters('teachable_student_email',$order->get_billing_email(),$order_id,$item_id);
-				$billing_name = apply_filters('teachable_student_name',$order->get_billing_first_name(),$order_id,$item_id);
-
-				$teachable_user_id=push_to_teachable($billing_name,$billing_email);
-				if($teachable_user_id>0){
-					$url2="https://developers.teachable.com/v1/enroll";
-					$ch2 = curl_init();
-					curl_setopt($ch2,CURLOPT_URL, $url2);
-					//$apiKey =' ';
-					$data = '{"user_id":'.$teachable_user_id.',"course_id":'.$meta_course_id.'}';
-
-					curl_setopt($ch2, CURLOPT_HTTPHEADER, array(
-						'Content-Type:application/json',
-						'apiKey: ' . TEACHABLEAPIKEY
-					));
-
-					curl_setopt($ch2,CURLOPT_CUSTOMREQUEST,'POST');
-					curl_setopt($ch2,CURLOPT_POSTFIELDS, $data);
-					curl_setopt($ch2,CURLOPT_SSL_VERIFYPEER,0);
-					curl_setopt($ch2,CURLOPT_SSL_VERIFYHOST,0);
-					curl_setopt($ch2,CURLOPT_RETURNTRANSFER, true);
-					$response2 = curl_exec($ch2);
-					curl_close($ch2);
+		function wpteachable_enroll_user_to_teachable( $order_id ) {
+	
+			$order = wc_get_order( $order_id );
+			foreach ( $order->get_items() as $item_id => $item ) {
+				$meta_course_id = get_post_meta( $item->get_product_id(), 'teachable_course_id', true );
+	
+				if($meta_course_id!==null){
+					// opportunity to change enrollment student's email & name using below filters
+					$billing_email = apply_filters('teachable_student_email',$order->get_billing_email(),$order_id,$item_id);
+					$billing_name = apply_filters('teachable_student_name',$order->get_billing_first_name(),$order_id,$item_id);
+	
+					$teachable_user_id=push_to_teachable($billing_name,$billing_email);
+					if($teachable_user_id>0){
+						$url2="https://developers.teachable.com/v1/enroll";
+						$ch2 = curl_init();
+						curl_setopt($ch2,CURLOPT_URL, $url2);
+						//$apiKey =' ';
+						$data = '{"user_id":'.$teachable_user_id.',"course_id":'.$meta_course_id.'}';
+	
+						curl_setopt($ch2, CURLOPT_HTTPHEADER, array(
+							'Content-Type:application/json',
+							'apiKey: ' . TEACHABLEAPIKEY
+						));
+	
+						curl_setopt($ch2,CURLOPT_CUSTOMREQUEST,'POST');
+						curl_setopt($ch2,CURLOPT_POSTFIELDS, $data);
+						curl_setopt($ch2,CURLOPT_SSL_VERIFYPEER,0);
+						curl_setopt($ch2,CURLOPT_SSL_VERIFYHOST,0);
+						curl_setopt($ch2,CURLOPT_RETURNTRANSFER, true);
+						$response2 = curl_exec($ch2);
+						curl_close($ch2);
+					}
 				}
 			}
 		}
 	}
 
+
+ if( !function_exists('push_to_teachable')){
+	
 	function push_to_teachable($name,$email){
 
 		$curl = curl_init();
@@ -114,4 +124,7 @@ if (TEACHABLEAPIKEY !== '') {
 		$response2 = json_decode($response, true);
 		return $teachable_user_id = $response2['id'];
 	}
+ }
+
+
 }
