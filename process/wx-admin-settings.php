@@ -5,11 +5,11 @@
 
 
 
-if( ! function_exists( ' teachable_add_fild ' )){
+if( ! function_exists( ' atsew_teachable_add_fild ' )){
 
-    add_filter('woocommerce_settings_tabs_array', 'teachable_add_fild', 50,1);
+    add_filter('woocommerce_settings_tabs_array', 'atsew_teachable_add_fild', 50,1);
 
-	function teachable_add_fild($settings_tab) {
+	function atsew_teachable_add_fild($settings_tab) {
 		$settings_tab['teachable_fild'] = __('Teachable', 'wx-teachable');
 		return $settings_tab;
 	}
@@ -18,12 +18,12 @@ if( ! function_exists( ' teachable_add_fild ' )){
 
 
 
-if( ! function_exists('teachable_add_fild_settings')){
+if( ! function_exists('atsew_teachable_add_fild_settings')){
 
-	add_action('woocommerce_settings_tabs_teachable_fild', 'teachable_add_fild_settings');
+	add_action('woocommerce_settings_tabs_teachable_fild', 'atsew_teachable_add_fild_settings');
 
-	function teachable_add_fild_settings() {
-		woocommerce_admin_fields(get_teachable_fild_settings());
+	function atsew_teachable_add_fild_settings() {
+		woocommerce_admin_fields(atsew_get_teachable_fild_settings());
 	}
 }
 
@@ -31,18 +31,18 @@ if( ! function_exists('teachable_add_fild_settings')){
 // upload data in option table
 
 
-if( !function_exists('teachable_update_options_fild_settings')){
+if( !function_exists('atsew_teachable_update_options_fild_settings')){
 
- add_action('woocommerce_update_options_teachable_fild', 'teachable_update_options_fild_settings');
+ add_action('woocommerce_update_options_teachable_fild', 'atsew_teachable_update_options_fild_settings');
 	
- function teachable_update_options_fild_settings() {
-		woocommerce_update_options(get_teachable_fild_settings());
+ function atsew_teachable_update_options_fild_settings() {
+		woocommerce_update_options(atsew_get_teachable_fild_settings());
 	}
 }
 
-if(! function_exists('get_teachable_fild_settings')){
+if(! function_exists('atsew_get_teachable_fild_settings')){
 	
-	function get_teachable_fild_settings() {
+	function atsew_get_teachable_fild_settings() {
 		$settings = array(
 			'section_title' => array(
 				'id' => 'teachable_fild_settings_title',
@@ -86,7 +86,7 @@ if(! function_exists('get_teachable_fild_settings')){
 			),
 		);
 	
-		return apply_filters('filter_teachable_fild_settings', $settings);
+		return apply_filters('atsew_filter_teachable_fild_settings', $settings);
 	}
 }
 
@@ -100,11 +100,11 @@ if(! function_exists('get_teachable_fild_settings')){
  * 
 */
 
-if( !function_exists('wx_teachable_redirect_settings_page')){
+if( !function_exists('atsew_wx_teachable_redirect_settings_page')){
 
-	add_action( 'activated_plugin', 'wx_teachable_redirect_settings_page' );
+	add_action( 'activated_plugin', 'atsew_wx_teachable_redirect_settings_page' );
 
-	function wx_teachable_redirect_settings_page( $plugin ) {
+	function atsew_wx_teachable_redirect_settings_page( $plugin ) {
 		if( $plugin === plugin_basename( __FILE__ ) ) {
 			exit( wp_redirect( admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' ) ) );
 		}
@@ -113,8 +113,8 @@ if( !function_exists('wx_teachable_redirect_settings_page')){
 
 
 
-if( !function_exists('wx_teachable_notice')){
-	function wx_teachable_notice() {
+if( !function_exists('atsew_wx_teachable_notice')){
+	function atsew_wx_teachable_notice() {
 		?>
 		<div class="notice notice-error is-dismissible">
 			<p><?php esc_html_e("Please Insert Teachable API KEY","wx-teachable");?> <a href="<?php echo admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' ); ?>"> <?php esc_html_e('Click Here.','wx-teachable');?></a></p>
@@ -129,8 +129,8 @@ $woo_settings_page = admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' 
 
 $current_page_url = admin_url(basename($_SERVER['REQUEST_URI']));
 
-if(TEACHABLEAPIKEY===null && $current_page_url !== $woo_settings_page ){
-    add_action( 'admin_notices', 'wx_teachable_notice' );
+if(ATSEW_TEACHABLEAPIKEY===null && $current_page_url !== $woo_settings_page ){
+    add_action( 'admin_notices', 'atsew_wx_teachable_notice' );
 }
 
 /**
@@ -139,11 +139,11 @@ if(TEACHABLEAPIKEY===null && $current_page_url !== $woo_settings_page ){
 
 
 
-if( !function_exists('wx_teachable_settings_link')){
+if( !function_exists('atsew_wx_teachable_settings_link')){
 
-	add_filter('plugin_action_links_'. PLUGIN_BASENAME, 'wx_teachable_settings_link');
+	add_filter('plugin_action_links_'. PLUGIN_BASENAME, 'atsew_wx_teachable_settings_link');
 
-	function wx_teachable_settings_link( array $links ){
+	function atsew_wx_teachable_settings_link( array $links ){
 		$url = get_admin_url() . "admin.php?page=wc-settings&tab=teachable_fild";
 		$settings_link = '<a href="' . $url . '">' . __('Settings', 'wx-teachable') . '</a>';
 		
@@ -158,8 +158,8 @@ if( !function_exists('wx_teachable_settings_link')){
 
 /*===== Add code from Wx-Teachable.php filte later  end ======*/
 
-if (TEACHABLEAPIKEY !== '') {
-    function wpteachable_is_secured( $nonce_field, $action, $post_id ) {
+if (ATSEW_TEACHABLEAPIKEY !== '') {
+    function atsew_wpteachable_is_secured( $nonce_field, $action, $post_id ) {
 		$nonce = isset( $_POST[ $nonce_field ] ) ? $_POST[ $nonce_field ] : '';
 
 		if ( $nonce === '' ) {
@@ -185,25 +185,25 @@ if (TEACHABLEAPIKEY !== '') {
 
 	}
 
-    if( !function_exists('wpteachable_add_custom_box') ){
-		function wpteachable_add_custom_box() {
+    if( !function_exists('atsew_wpteachable_add_custom_box') ){
+		function atsew_wpteachable_add_custom_box() {
 			$screens = [ 'product' ];
 			foreach ( $screens as $screen ) {
 				add_meta_box(
 					'wpteachable_box_id',           // Unique ID
 					__('Woocommerce to Teachable','wx-teachable'),      		// Box title
-					'wpteachable_custom_box_html',  // Content callback, must be of type callable
+					'atsew_wpteachable_custom_box_html',  // Content callback, must be of type callable
 					$screen                         // Post type
 				);
 			}
 		}
-		add_action( 'add_meta_boxes', 'wpteachable_add_custom_box' );
+		add_action( 'add_meta_boxes', 'atsew_wpteachable_add_custom_box' );
 	}
 
 
-	if( !function_exists('wpteachable_custom_box_html')){
+	if( !function_exists('atsew_wpteachable_custom_box_html')){
 		// admin meta box for choosing teachable course
-		function wpteachable_custom_box_html( $post ) {
+		function atsew_wpteachable_custom_box_html( $post ) {
 			$meta_course_id = get_post_meta( $post->ID, 'teachable_course_id', true );
 			
 
@@ -221,7 +221,7 @@ if (TEACHABLEAPIKEY !== '') {
 
 			curl_setopt($ch2, CURLOPT_HTTPHEADER, array(
 				'accept:application/json',
-				'apiKey: ' . TEACHABLEAPIKEY
+				'apiKey: ' . ATSEW_TEACHABLEAPIKEY
 			));
 
 			curl_setopt($ch2,CURLOPT_CUSTOMREQUEST,'GET');
@@ -237,15 +237,14 @@ if (TEACHABLEAPIKEY !== '') {
 
 			?>
 			<div id="courseDiv" class="form-group" >
-				<label for="course_id"><?=__('Choose a Teachable Course','wx-teachable')?>:</label><br/>
+				<label for="course_id"><?php echo __('Choose a Teachable Course','wx-teachable');?>:</label><br/>
 				<select  class="form-control form-select" aria-label="Default select example" name="course_id" id="course_id">
-					<option value="" selected><?=__('Select a Course','wx-teachable')?></option>
+					<option value="" selected><?php echo __('Select a Course','wx-teachable');?></option>
 					<?php
 					foreach ( $teachable_courses['courses'] as $item_id => $item ) {
-						//$brand_name = get_post_meta( $item->get_product_id(), 'actual_brand_name', true );
 						?>
-						<option <?php echo $meta_course_id===$item['id']?'selected':''; ?> data-id="<?php echo $item['name'];?>" value="<?php echo $item['id']; ?>">
-							<?php echo $item['name']; ?>
+						<option <?php echo esc_attr(($meta_course_id===$item['id']?'selected':'')); ?> data-id="<?php echo esc_attr($item['name']);?>" value="<?php echo esc_attr($item['id']); ?>">
+							<?php echo esc_html($item['name']); ?>
 						</option>
 						<?php
 					}
@@ -258,9 +257,9 @@ if (TEACHABLEAPIKEY !== '') {
 
 	
 
-	if(!function_exists('wpteachable_save_postdata')){
+	if(!function_exists('atsew_wpteachable_save_postdata')){
 
-		function wpteachable_save_postdata( $post_id ) {
+		function atsew_wpteachable_save_postdata( $post_id ) {
 			if ( array_key_exists( 'course_id', $_POST ) ) {
 				update_post_meta(
 					$post_id,
@@ -269,7 +268,7 @@ if (TEACHABLEAPIKEY !== '') {
 				);
 			}
 		}
-		add_action( 'save_post', 'wpteachable_save_postdata' );
+		add_action( 'save_post', 'atsew_wpteachable_save_postdata' );
 
 	}
 
