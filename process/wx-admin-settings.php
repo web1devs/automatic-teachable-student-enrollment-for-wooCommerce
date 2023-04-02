@@ -129,7 +129,7 @@ $woo_settings_page = admin_url( 'admin.php?page=wc-settings&tab=teachable_fild' 
 
 $current_page_url = admin_url(basename($_SERVER['REQUEST_URI']));
 
-if(ATSEW_TEACHABLEAPIKEY===null && $current_page_url !== $woo_settings_page ){
+if(!ATSEW_TEACHABLEAPIKEY && $current_page_url !== $woo_settings_page ){
     add_action( 'admin_notices', 'atsew_wx_teachable_notice' );
 }
 
