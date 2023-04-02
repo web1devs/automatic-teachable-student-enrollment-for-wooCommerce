@@ -214,25 +214,7 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 				$url="https://developers.teachable.com/v1/courses";
 			}
 
-			/*$ch2 = curl_init();
-			curl_setopt($ch2,CURLOPT_URL, $url2);
-
-			//$apiKey =' ';
-
-			curl_setopt($ch2, CURLOPT_HTTPHEADER, array(
-				'accept:application/json',
-				'apiKey: ' . ATSEW_TEACHABLEAPIKEY
-			));
-
-			curl_setopt($ch2,CURLOPT_CUSTOMREQUEST,'GET');
-			curl_setopt($ch2,CURLOPT_SSL_VERIFYPEER,0);
-			curl_setopt($ch2,CURLOPT_SSL_VERIFYHOST,0);
-			curl_setopt($ch2,CURLOPT_RETURNTRANSFER, true);
-			$response2 = curl_exec($ch2);
-			$teachable_courses = json_decode($response2, true);
 			
-			// print_r($teachable_courses);
-			curl_close($ch2);*/
 $args = array(
         'headers' => array(
             'accept'=>'application/json',
