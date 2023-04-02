@@ -214,7 +214,7 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 				$url2="https://developers.teachable.com/v1/courses";
 			}
 
-			$ch2 = curl_init();
+			/*$ch2 = curl_init();
 			curl_setopt($ch2,CURLOPT_URL, $url2);
 
 			//$apiKey =' ';
@@ -232,9 +232,16 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 			$teachable_courses = json_decode($response2, true);
 			
 			// print_r($teachable_courses);
-			curl_close($ch2);
-
-
+			curl_close($ch2);*/
+$args = array(
+        'headers' => array(
+            'accept'=>'application/json',
+            'apiKey'=>ATSEW_TEACHABLEAPIKEY
+        )
+    );
+    $response=wp_remote_get( $url, $args );
+    $response=wp_remote_retrieve_body($response);
+$teachable_courses = json_decode($response, true);
 			?>
 			<div id="courseDiv" class="form-group" >
 				<label for="course_id"><?php echo __('Choose a Teachable Course','wx-teachable');?>:</label><br/>
