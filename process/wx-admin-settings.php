@@ -209,9 +209,9 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 
 			$isPublishedShow = get_option('teachable_fild_is_published');
 			if($isPublishedShow === 'yes') {
-				$url2="https://developers.teachable.com/v1/courses?is_published=true";
+				$url="https://developers.teachable.com/v1/courses?is_published=true";
 			} else {
-				$url2="https://developers.teachable.com/v1/courses";
+				$url="https://developers.teachable.com/v1/courses";
 			}
 
 			/*$ch2 = curl_init();
