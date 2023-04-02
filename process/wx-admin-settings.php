@@ -141,7 +141,7 @@ if(ATSEW_TEACHABLEAPIKEY===null && $current_page_url !== $woo_settings_page ){
 
 if( !function_exists('atsew_wx_teachable_settings_link')){
 
-	add_filter('plugin_action_links_'. PLUGIN_BASENAME, 'atsew_wx_teachable_settings_link');
+	add_filter('plugin_action_links_'. ATSEW_PLUGIN_BASENAME, 'atsew_wx_teachable_settings_link');
 
 	function atsew_wx_teachable_settings_link( array $links ){
 		$url = get_admin_url() . "admin.php?page=wc-settings&tab=teachable_fild";
