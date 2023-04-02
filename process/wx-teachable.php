@@ -11,7 +11,7 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 	add_action( 'woocommerce_order_status_cancelled', 'atsew_wpteachable_unenroll_user_to_teachable' );
 
 	if( !function_exists('atsew_wpteachable_unenroll_user_to_teachable')){
-		function atses_wpteachable_unenroll_user_to_teachable( $order_id ) {
+		function atsew_wpteachable_unenroll_user_to_teachable( $order_id ) {
 
 			$order = wc_get_order( $order_id );
 	
