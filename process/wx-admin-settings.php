@@ -215,15 +215,15 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 			}
 
 			
-$args = array(
-        'headers' => array(
-            'accept'=>'application/json',
-            'apiKey'=>ATSEW_TEACHABLEAPIKEY
-        )
-    );
-    $response=wp_remote_get( $url, $args );
-    $response=wp_remote_retrieve_body($response);
-$teachable_courses = json_decode($response, true);
+			$args = array(
+					'headers' => array(
+						'accept'=>'application/json',
+						'apiKey'=>ATSEW_TEACHABLEAPIKEY
+					)
+				);
+				$response=wp_remote_get( $url, $args );
+				$response=wp_remote_retrieve_body($response);
+			$teachable_courses = json_decode($response, true);
 			?>
 			<div id="courseDiv" class="form-group" >
 				<label for="course_id"><?php echo __('Choose a Teachable Course','wx-teachable');?>:</label><br/>
