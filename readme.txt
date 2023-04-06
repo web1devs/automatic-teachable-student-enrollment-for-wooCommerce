@@ -13,7 +13,6 @@ Automatic Teachable Student Enrollment for WooCommerce plugin works to connect w
 Automatic Teachable Student Enrollment for WooCommerce plugin works to connect woocommerce store Teachable platform. It will facilitate to sell courses from woocommerce shops and students will be automatically enrolled under right course.
 
 == Installation ==
-Note: PHP cURL required (In you webhosting must need to be enabled cURL extension).
 Installation is straight Forward. Install it from the WordPress Plugin repository. and after installation Please follow below steps:
 
 1. Teachable API KEY:  Insert teachable API KEY  in the API Key Field Under woocomerce-> settings-> Tabs-> Teacheable. You can find your teachable API key from your teachable admin panel. Teachable dashboard -> Settings -> API keys 
