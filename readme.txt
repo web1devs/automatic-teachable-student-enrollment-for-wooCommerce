@@ -24,6 +24,28 @@ Installation is straight Forward. Install it from the WordPress Plugin repositor
 
 4.  Save Change:  Now click on Save change Button.
 
-That's All.
+
+== Screenshots==
+
+1. Plugin Activeted.
+
+2. Teachable API KEY Link.
+
+3. Teabable Tab On Woocommerce Settings page. 
+
+4. Teachable API KEY Example
+
+5. Add New Product 
+
+6. Woocommerce to Teachable Metabox Displaying 
+
+7. Displaying Teachable Course List in a Drop Down
+
+8. Selected  Teachable Course 
+
+9. Publish Product 
+
+
+
 
 
