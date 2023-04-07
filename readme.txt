@@ -1,5 +1,5 @@
 === Automatic Teachable Student Enrollment for WooCommerce ===
-Contributors: WebOneDevs
+Contributors: wooxperto
 Tags: WooCommerce, Teachable, Student Entrollment
 Requires at least: 4.7
 Tested up to: 6.1
@@ -43,8 +43,3 @@ Installation is straight Forward. Install it from the WordPress Plugin repositor
 8. Selected  Teachable Course 
 
 9. Publish Product 
-
-
-
-
-
