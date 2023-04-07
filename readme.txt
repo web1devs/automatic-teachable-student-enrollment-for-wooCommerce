@@ -1,13 +1,13 @@
 === Automatic Teachable Student Enrollment for WooCommerce ===
 Contributors: wooxperto
-Tags: WooCommerce, Teachable, Student Entrollment
+Tags: WooCommerce,Teachable,Student Entrollment
 Requires at least: 4.7
 Tested up to: 6.1
 Requires PHP: 5.4
 Stable tag: 1.0.0
 License: GPLv2 or later
 
-Automatic Teachable Student Enrollment for WooCommerce plugin works to connect woocommerce store and Teachable platform. It will facilitate to sell courses from woocommerce shops and students will be automatically enrolled under right course.
+The Automatic Teachable Student Enrollment for WooCommerce plugin connects a WooCommerce store with the Teachable platform. It facilitates the sale of courses from WooCommerce shops and automatically enrolls students in the correct course.
 
 == Description ==
 Automatic Teachable Student Enrollment for WooCommerce plugin works to connect woocommerce store Teachable platform. It will facilitate to sell courses from woocommerce shops and students will be automatically enrolled under right course.
