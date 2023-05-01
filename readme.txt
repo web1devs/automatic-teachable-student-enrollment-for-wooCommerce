@@ -49,3 +49,12 @@ Installation is straight Forward. Install it from the WordPress Plugin repositor
 8. Selected  Teachable Course 
 
 9. Publish Product 
+
+
+== Changelog ==
+
+= 1.1.0 = 
+* fixed Teachable Course Dropdown Selected Issue.  
+
+= 1.0.0 =
+* Initial Release.
