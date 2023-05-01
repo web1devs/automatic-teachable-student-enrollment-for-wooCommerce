@@ -204,7 +204,7 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 	if( !function_exists('atsew_wpteachable_custom_box_html')){
 		// admin meta box for choosing teachable course
 		function atsew_wpteachable_custom_box_html( $post ) {
-			$meta_course_id = get_post_meta( $post->ID, 'teachable_course_id', true );
+			$meta_course_id = (int) get_post_meta( $post->ID, 'teachable_course_id', true );
 			
 
 			$isPublishedShow = get_option('teachable_fild_is_published');
@@ -228,7 +228,7 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 			<div id="courseDiv" class="form-group" >
 				<label for="course_id"><?php echo __('Choose a Teachable Course','wx-teachable');?>:</label><br/>
 				<select  class="form-control form-select" aria-label="Default select example" name="course_id" id="course_id">
-					<option value="" selected><?php echo __('Select a Course','wx-teachable');?></option>
+					<option value=""><?php echo __('Select a Course','wx-teachable');?></option>
 					<?php
 					foreach ( $teachable_courses['courses'] as $item_id => $item ) {
 						?>
