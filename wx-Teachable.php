@@ -5,7 +5,7 @@ Plugin Name: Automatic Teachable Student Enrollment for WooCommerce
 Plugin URI: https://www.webonedevs.com/woocommerce-teachable-enrollment/
 Description: Automatic Teachable Student Enrollment for WooCommerce plugin works to connect woocommerce store to Teachable platform. It will facilitate to sell courses from woocommerce shops and students will be automatically enrolled under right courses. It Designed, Developed, Maintained & Supported by WebOneDevs Team.
 
-Version: 1.0.1
+Version: 1.0.2
 Author: WebOneDevs
 Author URI: https://webonedevs.com/
 License: GPLv2 or Later
@@ -32,5 +32,3 @@ if( is_admin() ){
 }
 
 require_once( ATSEW_TCM_ACC_PATH . 'process/wx-teachable.php' );
-
-
