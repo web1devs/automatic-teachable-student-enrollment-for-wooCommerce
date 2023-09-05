@@ -1,6 +1,6 @@
 <?php
 /**
- * Version: 1.0.2
+ * Version: 1.0.1
  */
 if (ATSEW_TEACHABLEAPIKEY !== '') {
 	# code...
