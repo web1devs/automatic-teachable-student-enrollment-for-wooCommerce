@@ -204,7 +204,7 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 	if( !function_exists('atsew_wpteachable_custom_box_html')){
 		// admin meta box for choosing teachable course
 		function atsew_wpteachable_custom_box_html( $post ) {
-			$meta_course_id = (int) get_post_meta( $post->ID, 'teachable_course_id', true );
+			$meta_course_id = (int) get_post_meta( $post->ID, 'teachable_course_id_'.$post->ID, true );
 			
 
 			$isPublishedShow = get_option('teachable_fild_is_published');
@@ -252,7 +252,7 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 			if ( array_key_exists( 'course_id', $_POST ) ) {
 				update_post_meta(
 					$post_id,
-					'teachable_course_id',
+					'teachable_course_id_'.$post_id,
 					sanitize_text_field($_POST['course_id'])
 				);
 			}
