@@ -1,6 +1,6 @@
 <?php
 /**
- * Version: 1.0.0
+ * Version: 1.0.2
  */
 if (ATSEW_TEACHABLEAPIKEY !== '') {
 	# code...
@@ -16,25 +16,27 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 			$order = wc_get_order( $order_id );
 	
 			foreach ( $order->get_items() as $item_id => $item ) {
-				$meta_course_id = get_post_meta( $item->get_product_id(), 'teachable_course_id', true );
+				$meta_course_id = get_post_meta( $item->get_product_id(), 'teachable_course_id_'.$item->get_product_id(), true );
 	
 				if($meta_course_id!==null){
-					// opportunity to change enrollment student's email & name using below filters
-					$billing_email = apply_filters('atsew_teachable_student_email',$order->get_billing_email(),$order_id,$item_id);
-					$billing_name = apply_filters('atsew_teachable_student_name',$order->get_billing_first_name(),$order_id,$item_id);
-	
-					$teachable_user_id=atsew_push_to_teachable($billing_name,$billing_email);
-					if($teachable_user_id>0){
-						$args = array(
-							'headers' => array(
-								'Content-Type'=>'application/json',
-								'accept'=>'application/json',
-								'apiKey'=>ATSEW_TEACHABLEAPIKEY
-							),	
-							'body'=>json_encode(['user_id'=>$teachable_user_id,'course_id'=>$meta_course_id]),
-							'method' => 'POST'
-						);
-						wp_remote_post( 'https://developers.teachable.com/v1/unenroll', $args );
+					if($meta_course_id>0){
+						// opportunity to change enrollment student's email & name using below filters
+						$billing_email = apply_filters('atsew_teachable_student_email',$order->get_billing_email(),$order_id,$item_id);
+						$billing_name = apply_filters('atsew_teachable_student_name',$order->get_billing_first_name(),$order_id,$item_id);
+		
+						$teachable_user_id=atsew_push_to_teachable($billing_name,$billing_email);
+						if((int)$teachable_user_id>0){
+							$args = array(
+								'headers' => array(
+									'Content-Type'=>'application/json',
+									'accept'=>'application/json',
+									'apiKey'=>ATSEW_TEACHABLEAPIKEY
+								),	
+								'body'=>json_encode(['user_id'=>$teachable_user_id,'course_id'=>$meta_course_id]),
+								'method' => 'POST'
+							);
+							wp_remote_post( 'https://developers.teachable.com/v1/unenroll', $args );
+						}
 					}
 				}
 			}
@@ -55,27 +57,29 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 	
 			$order = wc_get_order( $order_id );
 			foreach ( $order->get_items() as $item_id => $item ) {
-				$meta_course_id = get_post_meta( $item->get_product_id(), 'teachable_course_id', true );
+				$meta_course_id = get_post_meta( $item->get_product_id(), 'teachable_course_id_'.$item->get_product_id(), true );
 	
 				if($meta_course_id!==null){
-					// opportunity to change enrollment student's email & name using below filters
-					$billing_email = apply_filters('atsew_teachable_student_email',$order->get_billing_email(),$order_id,$item_id);
-					$billing_name = apply_filters('atsew_teachable_student_name',$order->get_billing_first_name(),$order_id,$item_id);
-	
-					$teachable_user_id=atsew_push_to_teachable($billing_name,$billing_email);
-					if($teachable_user_id>0){
+					if((int)$meta_course_id>0){
+						// opportunity to change enrollment student's email & name using below filters
+						$billing_email = apply_filters('atsew_teachable_student_email',$order->get_billing_email(),$order_id,$item_id);
+						$billing_name = apply_filters('atsew_teachable_student_name',$order->get_billing_first_name(),$order_id,$item_id);
+		
+						$teachable_user_id=atsew_push_to_teachable($billing_name,$billing_email);
+						if($teachable_user_id>0){
 
-						$args = array(
-							'headers' => array(
-								'Content-Type'=>'application/json',
-								'accept'=>'application/json',
-								'apiKey'=>ATSEW_TEACHABLEAPIKEY
-							),	
-							'body'=>json_encode(['user_id'=>$teachable_user_id,'course_id'=>$meta_course_id]),
-							'method' => 'POST'
-						);
-						wp_remote_post( 'https://developers.teachable.com/v1/enroll', $args );
-						
+							$args = array(
+								'headers' => array(
+									'Content-Type'=>'application/json',
+									'accept'=>'application/json',
+									'apiKey'=>ATSEW_TEACHABLEAPIKEY
+								),	
+								'body'=>json_encode(['user_id'=>$teachable_user_id,'course_id'=>$meta_course_id]),
+								'method' => 'POST'
+							);
+							wp_remote_post( 'https://developers.teachable.com/v1/enroll', $args );
+							
+						}
 					}
 				}
 			}
@@ -106,3 +110,4 @@ if (ATSEW_TEACHABLEAPIKEY !== '') {
 
 
 }
+
